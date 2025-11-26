@@ -1,0 +1,101 @@
+############################
+# ARCHIVOS DE ENTORNO
+############################
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+############################
+# PHP / COMPOSER
+############################
+
+# Vendor
+/vendor/
+
+# Cachés de Composer
+composer.lock
+composer.phar
+
+############################
+# NODE / NPM / GULP
+############################
+
+# Node modules
+/node_modules/
+
+# Build generado por Gulp
+/public/build/
+/public/js/*.map
+/public/css/*.map
+
+# Caché de npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+############################
+# SASS / CACHE
+############################
+
+.sass-cache/
+.cache/
+.cache-loader/
+gulp-cache/
+
+############################
+# LOGS
+############################
+
+*.log
+logs/
+storage/logs/
+
+############################
+# SISTEMA OPERATIVO
+############################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+############################
+# EDITORES
+############################
+
+# VSCode
+.vscode/
+
+# PHPStorm / JetBrains
+.idea/
+
+# Otros
+*.swp
+*.swo
+
+############################
+# ARCHIVOS DE BACKUPS TEMPORALES
+############################
+
+*.bak
+*.tmp
+*.temp
+*.old
+
+############################
+# SUBIDAS
+############################
+
+/public/imagenes/
+/public/uploads/
