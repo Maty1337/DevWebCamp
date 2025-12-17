@@ -133,25 +133,22 @@ class ActiveRecord {
 
     // crea un nuevo registro
     public function crear() {
-        // Sanitizar los datos
-        $atributos = $this->sanitizarAtributos();
+    $atributos = $this->sanitizarAtributos();
 
-        // Insertar en la base de datos
-        $query = " INSERT INTO " . static::$tabla . " ( ";
-        $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' "; 
-        $query .= join("', '", array_values($atributos));
-        $query .= " ') ";
+    $query  = "INSERT INTO " . static::$tabla . " (";
+    $query .= join(', ', array_keys($atributos));
+    $query .= ") VALUES ('";
+    $query .= join("', '", array_values($atributos));
+    $query .= "');";
 
-        // debuguear($query); // Descomentar si no te funciona algo
+    $resultado = self::$db->query($query);
 
-        // Resultado de la consulta
-        $resultado = self::$db->query($query);
-        return [
-           'resultado' =>  $resultado,
-           'id' => self::$db->insert_id
-        ];
-    }
+    return [
+        'resultado' => $resultado,
+        'id' => self::$db->insert_id
+    ];
+}
+
 
     // Actualizar el registro
     public function actualizar() {
