@@ -54,6 +54,11 @@
   padding: 0 2rem;
 }
 
+@mixin contenedor-md{
+  width: min(95%, 80rem);
+  margin: 0 auto;
+}
+
 @mixin contenedor-sm {
   margin: 0 auto;
   width: min(95%, 60rem);
@@ -148,4 +153,31 @@
           color: v.$azul;
           cursor: pointer;
           }
+}
+
+@mixin shadow{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+@mixin reset-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin tags{
+  @include reset-list;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  > li{
+    background-color: v.$azul;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-size: 1.4rem;
+    color: v.$blanco;
+    font-weight: v.$bold;
+  }
 }
