@@ -6,6 +6,11 @@
     display: flex;
     flex-direction: column;
 
+    &__radio{
+        display: flex;
+        gap: 2rem;
+    }
+
     &__fildset{
         border: none;
         margin-top: 1rem;
@@ -48,7 +53,8 @@
         font-size: 1.8rem;
         color: rgba(v.$negro, 0.8);
     }
-    &__input{
+    &__input,
+    &__select{
         padding: 1rem;
         border: 1px solid color.adjust(v.$gris-claro, $lightness: -20%);
         border-radius: 0.5rem;
