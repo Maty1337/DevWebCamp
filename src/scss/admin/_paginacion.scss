@@ -40,12 +40,13 @@
         }
 
         &--actual{
-            background-color: v.$grisOscuro;
+            background-color: v.$gris-oscuro;
             font-weight: v.$bold;
             display: none;
 
             @include m.tablet{
                 display: inline;
+            }
         }
     }
 }
