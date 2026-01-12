@@ -153,6 +153,13 @@ class ActiveRecord {
         return $resultado;
     }
 
+    //retornar los registros por un orden
+    public static function ordenar($columna, $orden){
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden}";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // Cuenta los registros
     public static function total(){
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
