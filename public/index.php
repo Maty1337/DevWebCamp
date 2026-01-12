@@ -2,14 +2,15 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use MVC\Router;
 use Controllers\APIEventos;
 use Controllers\APIPonentes;
-use MVC\Router;
 use Controllers\AuthController;
+use Controllers\EventosController;
+use Controllers\PaginasController;
 use Controllers\RegalosController;
 use Controllers\PonentesController;
 use Controllers\DashboardController;
-use Controllers\EventosController;
 use Controllers\RegistradosController;
 
 $router = new Router();
@@ -60,6 +61,14 @@ $router->get('/api/ponente',[APIPonentes::class, 'ponente']);
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+
+
+//Area pública
+
+$router->get('/', [PaginasController::class, 'index']);
+$router->get('/devwebcamp', [PaginasController::class, 'evento']);
+$router->get('/paquetes', [PaginasController::class, 'paquetes']);
+$router->get('/workshops', [PaginasController::class, 'conferencias']);
 
 
 $router->comprobarRutas();
