@@ -4,7 +4,7 @@
 
 
     <div class="devwebcamp__grid">
-        <div class="devwebcamp__imagen">
+        <div <?php aos_animacion() ?> class="devwebcamp__imagen">
             <picture>
                 <source srcset="build/img/sobre_devwebcamp.avif" type="image/avif">
                 <source srcset="build/img/sobre_devwebcamp.webp" type="image/webp">
@@ -12,9 +12,9 @@
             </picture>
         </div>
 
-        <div class="devwebcamp__contenido">
-            <p class="devwebcamp__texto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, doloribus voluptatem, soluta inventore facilis, incidunt ex animi unde dicta sunt dolorum rem optio maiores velit placeat cupiditate asperiores? Nisi, a!</p>
-            <p class="devwebcamp__texto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, doloribus voluptatem, soluta inventore facilis, incidunt ex animi unde dicta sunt dolorum rem optio maiores velit placeat cupiditate asperiores? Nisi, a!</p>
+        <div <?php aos_animacion() ?> class="devwebcamp__contenido">
+            <p <?php aos_animacion() ?> class="devwebcamp__texto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, doloribus voluptatem, soluta inventore facilis, incidunt ex animi unde dicta sunt dolorum rem optio maiores velit placeat cupiditate asperiores? Nisi, a!</p>
+            <p <?php aos_animacion() ?> class="devwebcamp__texto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi, doloribus voluptatem, soluta inventore facilis, incidunt ex animi unde dicta sunt dolorum rem optio maiores velit placeat cupiditate asperiores? Nisi, a!</p>
         </div>
     </div>
 </main>

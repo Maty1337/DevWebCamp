@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+
+.pagina_404{
+
+    &__contenedor{
+        text-align: center;
+    }
+
+    &__enlace{
+        color: v.$azul;
+    }
+}
