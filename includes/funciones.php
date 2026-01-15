@@ -34,3 +34,4 @@ function aos_animacion() : void {
     echo ' data-aos="' . $efectos[$efecto] . '" ';
     
 }
+

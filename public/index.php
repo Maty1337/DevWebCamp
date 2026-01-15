@@ -10,6 +10,7 @@ use Controllers\EventosController;
 use Controllers\PaginasController;
 use Controllers\RegalosController;
 use Controllers\PonentesController;
+use Controllers\RegistroController;
 use Controllers\DashboardController;
 use Controllers\RegistradosController;
 
@@ -61,6 +62,16 @@ $router->get('/api/ponente',[APIPonentes::class, 'ponente']);
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
 $router->get('/admin/regalos', [RegalosController::class, 'index']);
+
+//Registro de usuarios
+$router->get('/finalizar-registro', [RegistroController::class, 'crear']);
+$router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
+$router->post('/finalizar-registro/paypal', [RegistroController::class, 'crearOrdenPaypal']);
+$router->post('/finalizar-registro/paypal-capturar', [RegistroController::class, 'capturarPaypal']);
+
+
+//Boleto Virtual
+$router->get('/boleto', [RegistroController::class, 'boleto']);
 
 
 //Area pública
