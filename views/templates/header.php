@@ -5,8 +5,7 @@
                 <form method="POST" action="/logout" class="header__form">
                     <input type="submit" class="header__submit" value="Cerrar Sesion">
                 </form>
-                <a href="<?php echo isAdmin() ? '/admin/dashboard' : '/finalizar-registro'; ?>" class="header__enlace">Dashboard</a>
-                
+                <a href="<?php echo isAdmin() ? '/admin/dashboard' : '/finalizar-registro'; ?>" class="header__enlace">Administrar</a>
             <?php } else { ?>
             <a href="/registro" class="header__enlace">Registro</a>
             <a href="/login" class="header__enlace">Iniciar Sesion</a>

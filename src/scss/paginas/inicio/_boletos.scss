@@ -84,4 +84,87 @@
         @include m.boton(v.$azul, v.$blanco);
         width: auto;
     }
+
+    $modificador: &;
+
+    &--acceso{
+        width: 30rem;
+        height: 50rem;
+        padding: 10rem 3rem;
+        @include m.tablet{
+            width: 60rem;
+            height: 30rem;
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #{$modificador}__logo{
+            @include m.texto-fluido(2rem, 3rem);
+            margin: 0;
+            text-align: left;
+        }
+
+        #{$modificador}__codigo{
+            font-size: 4rem;
+            font-weight: v.$bold;
+            text-align: center;
+            position: absolute;
+            bottom: 12rem;
+            margin: 0;
+            left: 0;
+            width: 100%;
+            
+            @include m.tablet{
+                rotate: 90deg;
+                width: 30rem;
+                transform-origin: 0 0;
+                top: 0;
+                left: calc(100% - 5rem);
+            }
+        }
+
+        #{$modificador}__nombre{
+            font-size: 2.4rem;
+            font-weight: v.$bold;
+            text-transform: uppercase;
+        }
+    }
+
+    &::before{
+        clip-path: circle(50% at 50% 25%);
+        left: calc(50% - 2.5rem);
+        top: 0;
+        @include m.tablet{
+                clip-path: circle(50% at 25% 50%);
+                left: 0;
+                top: calc(50% - 2.5rem);
+        }
+    }
+
+    &::after{
+        clip-path: circle(50% at 50% 75%);
+        left: calc(50% - 2.5rem);
+        top: calc(100% - 5rem);
+        @include m.tablet{
+                clip-path: circle(50% at 75% 50%);
+                left: calc(100% - 5rem);
+                top: calc(50% - 2.5rem);
+        }
+    }
+}
+
+.paypal-ok{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  background: #e9fff0;
+  color: #0f5132;
+  border: 1px solid #b7f5c8;
+}
+
+.paypal-button{
+    margin-top: 12px;
 }
