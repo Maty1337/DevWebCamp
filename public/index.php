@@ -68,6 +68,8 @@ $router->get('/finalizar-registro', [RegistroController::class, 'crear']);
 $router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
 $router->post('/finalizar-registro/paypal', [RegistroController::class, 'crearOrdenPaypal']);
 $router->post('/finalizar-registro/paypal-capturar', [RegistroController::class, 'capturarPaypal']);
+$router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+$router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
 
 
 //Boleto Virtual
