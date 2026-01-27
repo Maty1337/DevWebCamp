@@ -104,8 +104,8 @@ class ActiveRecord {
     }
 
     // Obtener todos los Registros
-    public static function all() {
-        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC";
+    public static function all($orden = 'DESC') {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id ${orden}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
@@ -119,9 +119,16 @@ class ActiveRecord {
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite} ORDER BY id DESC" ;
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT ${limite} " ;
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado  ;
+    }
+
+    // Paginación de registros
+    public static function paginar($por_pagina, $offset) {
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT ${por_pagina} OFFSET ${offset}";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
     }
 
     // Busqueda Where con Columna 
@@ -131,27 +138,80 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Busqueda Where con varias Columnas
+    public static function whereArray($array = []){
+        $query = "SELECT * FROM " . static::$tabla . " WHERE ";
+
+        foreach($array as $key => $value) {
+            if($key == array_key_last($array)){
+                $query .= " ${key} = '${value}'";
+            } else{
+                $query .= " ${key} = '${value}' AND ";
+            }
+        }
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    //retornar los registros por un orden
+    public static function ordenar($columna, $orden){
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden}";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    //Retornar por orden y limite
+    //retornar los registros por un orden
+    public static function ordenarLimite($columna, $orden, $limite){
+        $query = "SELECT * FROM " . static::$tabla . " ORDER BY ${columna} ${orden} LIMIT ${limite} ";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
+    // Cuenta los registros
+    public static function total($columna = '', $valor = ''){
+        $query = "SELECT COUNT(*) FROM " . static::$tabla;
+        if($columna){
+            $query .= " WHERE ${columna} = '${valor}'";
+        }
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+        return array_shift($total);
+    }
+
+    //Total de registros con un Array Where
+    public static function totalArray($array = []){
+        $query = "SELECT COUNT(*) FROM " . static::$tabla . " WHERE ";
+        foreach($array as $key => $value) {
+            if($key == array_key_last($array)){
+                $query .= " ${key} = '${value}'";
+            } else{
+                $query .= " ${key} = '${value}' AND ";
+            }
+        }
+        $resultado = self::$db->query($query);
+        $total = $resultado->fetch_array();
+        return array_shift($total);
+    }
+
     // crea un nuevo registro
     public function crear() {
-        // Sanitizar los datos
-        $atributos = $this->sanitizarAtributos();
+    $atributos = $this->sanitizarAtributos();
 
-        // Insertar en la base de datos
-        $query = " INSERT INTO " . static::$tabla . " ( ";
-        $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' "; 
-        $query .= join("', '", array_values($atributos));
-        $query .= " ') ";
+    $query  = "INSERT INTO " . static::$tabla . " (";
+    $query .= join(', ', array_keys($atributos));
+    $query .= ") VALUES ('";
+    $query .= join("', '", array_values($atributos));
+    $query .= "');";
 
-        // debuguear($query); // Descomentar si no te funciona algo
+    $resultado = self::$db->query($query);
 
-        // Resultado de la consulta
-        $resultado = self::$db->query($query);
-        return [
-           'resultado' =>  $resultado,
-           'id' => self::$db->insert_id
-        ];
-    }
+    return [
+        'resultado' => $resultado,
+        'id' => self::$db->insert_id
+    ];
+}
+
 
     // Actualizar el registro
     public function actualizar() {

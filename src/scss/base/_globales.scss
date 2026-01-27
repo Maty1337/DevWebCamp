@@ -4,6 +4,7 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    height: 100%;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -18,4 +19,8 @@ a {
 img {
     width: 100%;
     height: auto;
+}
+
+.swal2-popup {
+    font-size: 2rem !important;
 }
